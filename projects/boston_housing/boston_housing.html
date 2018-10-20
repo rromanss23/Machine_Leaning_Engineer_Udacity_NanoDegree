@@ -11879,20 +11879,53 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>105000.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -11923,7 +11956,7 @@ Minimum price: $105000.0
 Maximum price: $1024800.0
 Mean price: $454342.9447852761
 Median price $438900.0
-Standard deviation of prices: $165340.27765266786
+Standard deviation of prices: $165171.13154429477
 </pre>
 </div>
 </div>
@@ -12115,13 +12148,14 @@ Standard deviation of prices: $165340.27765266786
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>Yes, this model succesfully captured the variation of the atrget variable. There are to reasons why I believe this:</p>
+<p>Yes, this model succesfully captured the variation of the target variable. There are two reasons why I believe this:</p>
 <ul>
 <li><p>First, if we take a look at the values (True and Predicted) we can see that the deviations between them are low.</p>
 </li>
-<li><p>In addition, when computing the R^2 score, we have obtained a value of 0.923, which is quite closely to 1. As this R^2 score is the proportion of the dependent variable that can be predicted from the independent variable, and it is quite high, we conclude that our model has made quite good predictions.</p>
+<li><p>In addition, when computing the R^2 score, we have obtained a value of 0.923, which is quite closely to 1. As this R^2 score is the proportion of the dependent variable that can be predicted from the independent variable, by a linar model, and it is quite high, we conclude that our model has made quite good predictions.</p>
 </li>
 </ul>
+<p>R-squared = Explained variation/Total variation</p>
 
 </div>
 </div>
@@ -12290,6 +12324,8 @@ Think about the pros and cons of adding more training points based on if the tra
 </li>
 <li><p>As both scores (training and testing) tend to converge, from the 300 points treshold, having more training points will not benefit the model.</p>
 </li>
+<li><p>(Extra question): In general, with more columns for each observation, we'll get more information and the model will be able to learn better from the dataset and therefore, make better predictions.</p>
+</li>
 </ul>
 
 </div>
@@ -12359,9 +12395,9 @@ Think about the pros and cons of adding more training points based on if the tra
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li><p>With the maximun depth of one, the graphic shows that the model does not return good score in neither training nor testing data, which is a symptom of underfitting and so, high bias.</p>
+<li><p>With the maximun depth of one, the graphic shows that the model does not return good score in neither training nor testing data, which is a symptom of underfitting and so, high bias. To improve performance, we should increase model's complexity, in this case increasing the max_depth hyperparameter to get better results.</p>
 </li>
-<li><p>With the maximun depth of ten, the graphic shows that the model learn perfectly well from training data (with a score close to one) and also returns poor results on test data, which is an indicator of overfitting, not being able to generalize well on new data. This is a problem of High Variance.</p>
+<li><p>With the maximun depth of ten, the graphic shows that the model learn perfectly well from training data (with a score close to one) and also returns poor results on test data, which is an indicator of overfitting, not being able to generalize well on new data. This is a problem of High Variance. To improve performance, we should decrease the model's complexity, in this case decreasing the max_depth hyperparameter to get better results.</p>
 </li>
 </ul>
 
@@ -12420,9 +12456,13 @@ Think about the pros and cons of adding more training points based on if the tra
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>The grid search technique is a tool for evaluating what are the best model hyperparameters for training and testing the model. It is used by giving a set of posible values for each hyperparameter of the model, the method tries each one of them and yields the model with the best score. The grid is the combination of different values that can be used for each hyperparameter. for example if we are considering a SVM estimator, we could consider the following posible hyperparameters:</p>
-<p>Kerner = 'poly' or 'rbf'</p>
-<p>C = 0.1, 1 or 10</p>
+<p>The grid search technique exhaustively generates candidates from a grid of parameter values specified with the param_grid parameter, which is a dictionary with the values of the hyperparameters to evaluate. One eample can be:</p>
+<p>param_grid =  [
+  {'C': [1, 10, 100, 1000], 'kernel': ['linear']},
+  {'C': [1, 10, 100, 1000], 'gamma': [0.001, 0.0001], 'kernel': ['rbf']},
+ ]</p>
+<p>In this example, two grids should be explored: one with a linear kernel an C values of [1,10,100,1000], and the second one with an RBF kernel, and the cross product of C values ranging in [1, 10, 100, 1000] and gamma values in [0.001, 0.0001].</p>
+<p>When fitting it on a dataset all the possible combinations of parameter values are evaluated and the best combination is retained.</p>
 
 </div>
 </div>
@@ -12452,6 +12492,7 @@ Think about the pros and cons of adding more training points based on if the tra
 <p>When evaluating different hyperparameters for estimators, there is still a risk of overfitting on the test set because the parameters can be tweaked until the estimator performs optimally. This way, knowledge about the test set can “leak” into the model and evaluation metrics no longer report on generalization performance. To solve this problem, yet another part of the dataset can be held out as a so-called “validation set”: training proceeds on the training set, after which evaluation is done on the validation set, and when the experiment seems to be successful, final evaluation can be done on the test set.</p>
 <p>However, by partitioning the available data into three sets (training, validating and testing sets), we drastically reduce the number of samples which can be used for learning the model, and the resulting model may not be sufficiently well trained (underfitting).</p>
 <p>By using k-fold validation we make sure that the model uses all the training data available for tunning the model, it can be computationally expensive but allows to train models even if little data is available.</p>
+<p>(Review suggestion): The main purpose of k-fold validation is to get an unbiased estimate of model generalization on new data.</p>
 
 </div>
 </div>
@@ -12602,7 +12643,7 @@ Think about the pros and cons of adding more training points based on if the tra
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong> Hint: </strong> The answer comes from the output of the code snipped above.</p>
 <p><strong>Answer: </strong></p>
-<p>'max_depth' is 4 for the optimal model.</p>
+<p>'max_depth' is 4 for the optimal model. Which is the same as my guess in Question 6.</p>
 
 </div>
 </div>
@@ -12726,6 +12767,12 @@ Predicted selling price for Client 3&#39;s home: $931,636.36
 </li>
 <li><p>For client 1, we can see that its features are intermediate between the latter 2, and therefore, its price is quite near the mean and median.</p>
 </li>
+</ul>
+<p>(Extra Question from the review):</p>
+<p>As stated on Question 1:</p>
+<ul>
+<li>'RM', has a directy proportional relationship with the dependent variable 'Prices'.</li>
+<li>In contrast, 'LSTAT' and 'PTRATIO' have a inversely proportional relationship with the dependent variable 'PRICES'.</li>
 </ul>
 
 </div>
